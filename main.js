@@ -22,6 +22,7 @@ function displayCards(){
 
 // Creates a deck of 52 cards
 function newDeck(){
+  var deck = [];
   var ranks = [
     {card:"a"},
     {card:"2"},
@@ -39,19 +40,26 @@ function newDeck(){
   ];
 
   var suits = [ "d", "c", "s", "h"];
-  var deck = [];
   for (var i = 0; i < ranks.length; i++) {
     for (var n = 0; n < suits.length; n++) {
       deck.push({
         card: ranks[i].card,
         suit: suits[n]
-      }
-    );
+      });
     }
   }
-  console.log(deck);
+  // console.log(deck);
+  return deck;
 }
-newDeck();
 
 // Shuffles the Deck
-function shuffleCards(cardDeck){}
+function shuffleCards(cardDeck){
+  var shuffled_array= [];
+  var workArr = cardDeck.slice(0);
+   for (var i = 0; i < cardDeck.length; i++) {
+     var random = Math.floor(Math.random() * workArr.length);
+     shuffled_array.push(workArr.splice(random,1)[0]);
+   }
+   console.log(shuffled_array);
+   return shuffled_array;
+}
